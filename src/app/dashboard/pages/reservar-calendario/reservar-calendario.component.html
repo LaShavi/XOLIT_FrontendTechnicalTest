@@ -1,0 +1,46 @@
+<app-title title="Reservas" />
+
+<!-- <button mat-raised-button color="primary" (click)="nuevaReserva()">Nueva Reserva</button> -->
+<table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+  <!-- Columnas -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="clienteNombre">
+    <th mat-header-cell *matHeaderCellDef>Cliente</th>
+    <td mat-cell *matCellDef="let element">{{ element.clienteNombre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="espaciosCompartidosNombre">
+    <th mat-header-cell *matHeaderCellDef>Espacio</th>
+    <td mat-cell *matCellDef="let element">{{ element.espaciosCompartidosNombre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaIniReserva">
+    <th mat-header-cell *matHeaderCellDef>Fecha Inicial</th>
+    <td mat-cell *matCellDef="let element">{{ element.fechaIniReserva | date: 'dd/MM/yyyy HH:mm' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaFinReserva">
+    <th mat-header-cell *matHeaderCellDef>Fecha Fin</th>
+    <td mat-cell *matCellDef="let element">{{ element.fechaFinReserva | date: 'dd/MM/yyyy HH:mm' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="editarReserva(element.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="eliminarReserva(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Encabezado y filas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

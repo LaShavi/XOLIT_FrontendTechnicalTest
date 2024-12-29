@@ -1,0 +1,16 @@
+.table-container {
+  margin: 16px;
+  overflow-x: auto;
+}
+
+.full-width-table {
+  width: 100%;
+  min-width: 800px; /* Ajusta según el número de columnas */
+}
+
+mat-header-cell,
+mat-cell {
+  text-align: left;
+  padding: 8px;
+  white-space: nowrap;
+}
